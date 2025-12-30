@@ -1,1 +1,9 @@
 /venv
+.env
+.DS_Store
+/__pycache__
+/bin/__pycache__
+/bot/__pycache__
+/bot/cogs/__pycache__
+/bot/core/__pycache__
+/bot/dice/__pycache__
