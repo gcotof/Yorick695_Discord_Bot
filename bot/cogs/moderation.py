@@ -5,10 +5,13 @@ class Moderation(commands.Cog):
         self.bot = bot
 
     @commands.command(name="clean")
-    @commands.has_permissions(manage_messages=True)
+    @commands.has_permissions(administrator=True)
     async def clean(self, ctx: commands.Context, amount: int = 20):
         if amount < 1 or amount > 100:
-            await ctx.reply("El número debe estar entre 1 y 100.", mention_author=False)
+            await ctx.reply(
+                "El número debe estar entre 1 y 100.",
+                mention_author=False
+            )
             return
 
         deleted = await ctx.channel.purge(limit=amount + 1)
@@ -18,7 +21,10 @@ class Moderation(commands.Cog):
     @clean.error
     async def clean_error(self, ctx: commands.Context, error: Exception):
         if isinstance(error, commands.MissingPermissions):
-            await ctx.reply("No tienes permisos para usar este comando.", mention_author=False)
+            await ctx.reply(
+                "Este comando solo puede ser usado por administradores.",
+                mention_author=False
+            )
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(Moderation(bot))
