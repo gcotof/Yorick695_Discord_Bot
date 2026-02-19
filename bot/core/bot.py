@@ -6,6 +6,7 @@ DEFAULT_EXTENSIONS = (
     "bot.cogs.moderation",
     "bot.cogs.dice",
     "bot.cogs.wrath_and_glory",
+    "bot.cogs.funny",
 )
 
 class YorickBot(commands.Bot):
